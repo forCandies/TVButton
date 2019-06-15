@@ -21,7 +21,7 @@ public extension TVButtonLayer {
      Initialise the TVButton layer by passing a UIImage
      - Parameter image: UIImage to display. It is essential that all images have the same dimensions.
      */
-    public init(image: UIImage) {
+    init(image: UIImage) {
         self.init(internalImage: image)
     }
 }
@@ -131,7 +131,7 @@ open class TVButton: UIButton, UIGestureRecognizerDelegate {
         containerView.layer.cornerRadius = cornerRadius
         self.clipsToBounds = true
         specularView.alpha = 0.0
-        specularView.contentMode = UIViewContentMode.scaleAspectFill
+        specularView.contentMode = .scaleAspectFill
         self.layer.shadowRadius = self.bounds.size.height/(2*shadowFactor)
         self.layer.shadowOffset = CGSize(width: 0.0, height: shadowFactor/3)
         self.layer.shadowOpacity = 0.5;
@@ -160,6 +160,7 @@ open class TVButton: UIButton, UIGestureRecognizerDelegate {
      Pan gesture recognizer handler.
      - Parameter gestureRecognizer: TVButton's UIPanGestureRecognizer.
      */
+    @objc
     func handlePan(_ gestureRecognizer: UIGestureRecognizer) {
         self.gestureRecognizerDidUpdate(gestureRecognizer)
     }
@@ -168,6 +169,7 @@ open class TVButton: UIButton, UIGestureRecognizerDelegate {
      Long press gesture recognizer handler.
      - Parameter gestureRecognizer: TVButton's UILongPressGestureRecognizer.
      */
+    @objc
     func handleLongPress(_ gestureRecognizer: UIGestureRecognizer) {
         self.gestureRecognizerDidUpdate(gestureRecognizer)
     }
@@ -176,8 +178,9 @@ open class TVButton: UIButton, UIGestureRecognizerDelegate {
      Tap gesture recognizer handler. Sends TouchUpInside to super.
      - Parameter gestureRecognizer: TVButton's UITapGestureRecognizer.
      */
+    @objc
     func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
-        super.sendActions(for: UIControlEvents.touchUpInside)
+        super.sendActions(for: .touchUpInside)
     }
     
     /**
